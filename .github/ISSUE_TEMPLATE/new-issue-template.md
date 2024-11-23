@@ -1,6 +1,6 @@
 ---
-name: New Issue Template
-about: Describe this issue template's purpose here.
+name: Generic Issue Template
+about: A simple template to get started with issues.
 title: ''
 labels: ''
 assignees: joshdougall
@@ -14,7 +14,6 @@ Add a brief summary here, and what you would like to accomplish.
 ## Acceptance Criteria
 
 - [ ] Add clear items that would mark this issue as complete.
-- [ ] Item 2
 
 ### Notes
 
