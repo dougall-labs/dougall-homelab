@@ -17,4 +17,4 @@ services:
     labels:
       promtail_logging: true
       net.unraid.docker.managed: "composeman"
-      net.unraid.docker.icon: "{{ docker_image_icon }}"
+      net.unraid.docker.icon: "{{ watchtower_docker_image_icon }}"

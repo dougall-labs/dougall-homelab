@@ -44,13 +44,25 @@ ansible/
 2. **SSH Access**: Configured SSH keys for all target hosts
 3. **Python**: On all target hosts (for Ansible modules)
    - On Unraid, install the *Python 3 for UNRAID* plugin via Community Apps (support thread: https://forums.unraid.net/topic/175402-plugin-python-3-for-unraid-611/)
-4. **Ansible Collections**: 
+4. **Ansible Collections**: Required collections must be installed before running playbooks:
    ```bash
+   # Install all required collections from requirements.yml
+   ansible-galaxy collection install -r requirements.yml
+   ```
+   
+   Or install individually:
+   ```bash
+   # Required for docker_compose_v2 module (used by watchtower and other roles)
    ansible-galaxy collection install community.docker
    ```
    ```bash
-   ansible-galaxy collection install community.general  # needed for 1Password lookups
+   # Optional: needed for 1Password lookups if using 1Password for secrets management
+   ansible-galaxy collection install community.general
    ```
+   
+   **Note**: The `community.docker` collection is required for roles that use Docker Compose (like watchtower). Without it, ansible-lint will report errors about unresolved modules.
+   
+   **For CI/CD**: If you're running ansible-lint in CI/CD pipelines (GitHub Actions, GitLab CI, etc.), you must install the collections on the runner before running ansible-lint. Use `ansible-galaxy collection install -r requirements.yml` in your workflow.
 
 ## Secrets Management
 

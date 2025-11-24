@@ -4,14 +4,14 @@
 
 - name: Deploy Unraid server services
   hosts: unraid
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
   vars_files:
     - ../group_vars/watchtower/secrets.yml
-  
+
   tasks:
     - name: Deploy Unraid services
-      include_role:
+      ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
         - watchtower
