@@ -1,0 +1,5 @@
+---
+# Variables for unraid host group
+# Unraid-specific labels for docker-compose
+# use_unraid_labels: true
+# to include compose_man and icon labels to show up correctly in Unraid.

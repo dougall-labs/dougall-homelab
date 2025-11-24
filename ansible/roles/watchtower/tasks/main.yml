@@ -1,0 +1,22 @@
+---
+# Tasks for deploying watchtower
+
+- name: Create watchtower directory
+  file:
+    path: /mnt/cache/appdata/watchtower
+    state: directory
+    mode: '0755'
+
+- name: Deploy watchtower docker-compose.yml
+  template:
+    src: docker-compose.yml
+    dest: /mnt/cache/appdata/watchtower/docker-compose.yml
+    mode: '0644'
+  register: watchtower_compose
+
+- name: Deploy watchtower container
+  community.docker.docker_compose_v2:
+    project_src: /mnt/cache/appdata/watchtower
+    state: present
+    pull: always
+  when: watchtower_compose.changed

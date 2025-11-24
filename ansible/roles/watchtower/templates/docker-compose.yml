@@ -1,0 +1,20 @@
+services:
+  watchtower:
+    container_name: "{{ watchtower_container_name }}"
+    image: "{{ watchtower_image }}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - --notifications-hostname
+      - "{{ watchtower_notifications_hostname }}"
+      - --interval
+      - "{{ watchtower_interval }}"
+      - --cleanup
+      - --rolling-restart
+      - --notification-url
+      - "{{ watchtower_notification_url }}"
+    restart: unless-stopped
+    labels:
+      promtail_logging: true
+      net.unraid.docker.managed: "composeman"
+      net.unraid.docker.icon: "{{ watchtower_docker_image_icon }}"
