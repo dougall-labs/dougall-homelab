@@ -1,0 +1,13 @@
+---
+# Default variables for watchtower role
+# Override these in group_vars or host_vars
+
+watchtower_image: "nickfedor/watchtower:latest"
+watchtower_container_name: "watchtower"
+docker_image_icon: "https://containrrr.dev/watchtower/images/logo-450px.png"
+
+# Watchtower configuration
+watchtower_interval: 300  # Check interval in seconds
+watchtower_cleanup: true  # Remove old images
+watchtower_rolling_restart: true  # Restart one container at a time
+watchtower_notifications_hostname: "{{ inventory_hostname }}"
