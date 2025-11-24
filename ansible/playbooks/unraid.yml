@@ -1,0 +1,17 @@
+---
+# Playbook for deploying Unraid server stack
+# Usage: ansible-playbook playbooks/unraid.yml
+
+- name: Deploy Unraid server services
+  hosts: unraid
+  become: yes
+  gather_facts: yes
+  vars_files:
+    - ../group_vars/watchtower/secrets.yml
+  
+  tasks:
+    - name: Deploy Unraid services
+      include_role:
+        name: "{{ item }}"
+      loop:
+        - watchtower
