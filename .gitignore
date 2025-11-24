@@ -35,3 +35,22 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ansible Vault files
+.vault_pass
+*.vault
+ansible/vault_pass
+ansible/.vault_pass
+ansible/*.vault
+
+# Ansible secrets and sensitive configs
+ansible/secrets/
+ansible/group_vars/*/secrets.yml
+ansible/host_vars/*/secrets.yml
+
+# Bitwarden CLI session files
+.bw_session
+
+# Docker environment files
+.env
+.env.local
